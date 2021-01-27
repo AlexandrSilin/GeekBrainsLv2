@@ -49,11 +49,11 @@ public class AppRun {
 
     public static int additionElements(String[][] array) throws MyArrayDataException {
         int sum = 0;
-        for (String[] strings : array) {
-            for (String element : strings) {
-                if (!Character.isDigit(element.charAt(0)))
-                    throw new MyArrayDataException();
-                sum += Integer.parseInt(element);
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[i].length; j++){
+                if (!Character.isDigit(array[i][j].charAt(0)))
+                    throw new MyArrayDataException("Illegal character(s) in string at [" + i + "][" + j + "]" );
+                sum += Integer.parseInt(array[i][j]);
             }
         }
         return sum;
