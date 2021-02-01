@@ -18,11 +18,8 @@ public class Contact implements Comparable <Contact> {
         if (this.equals(contact)) {
             return 0;
         }
-        if (this.lastName.equals(contact.getLastName())) {
-            return 1;
-        }
         for (int i = 0; i < Math.min(this.lastName.length(), contact.lastName.length()); i++){
-            if (this.lastName.charAt(i) < contact.lastName.charAt(1)){
+            if (this.lastName.charAt(i) < contact.lastName.charAt(i)){
                 return -1;
             }
         }
