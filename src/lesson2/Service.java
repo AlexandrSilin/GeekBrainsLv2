@@ -1,4 +1,7 @@
-package lesson2.myExeptions;
+package lesson2;
+
+import lesson2.myExeptions.MyArrayDataException;
+import lesson2.myExeptions.MyArraySizeException;
 
 public class Service {
     private static int tryToSum(String element, int i,  int j) throws MyArrayDataException {
@@ -25,7 +28,7 @@ public class Service {
         return sum;
     }
 
-    public static void checkArray(String[][] array) throws MyArraySizeException{
+    public static void checkArray(String[][] array) throws MyArraySizeException {
         if (array.length > 4) {
             throw new MyArraySizeException();
         }
