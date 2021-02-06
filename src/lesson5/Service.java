@@ -18,6 +18,7 @@ public class Service {
         for (int i = 0; i < size; i++) {
             arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
+
         System.out.println("With one thread time in mills: " + (System.currentTimeMillis() - a));
     }
 
@@ -29,15 +30,17 @@ public class Service {
         System.arraycopy(arr, 0, arr1, 0, h);
         System.arraycopy(arr, h, arr2, 0, h);
         Thread t1 = new Thread(() -> {
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < h; i++) {
                 arr1[i] = (float) (arr1[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
         });
         Thread t2 = new Thread(() -> {
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < h; i++) {
                 arr2[i] = (float) (arr2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
         });
+        t1.start();
+        t2.start();
         try {
             t1.join();
             t2.join();
